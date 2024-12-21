@@ -35,7 +35,6 @@ const priorityOrder = {
 
 
 const [search, setSearch] = React.useState("");
-
 const [status, setStatus] = React.useState("All");
 const [prior, setPrior] = React.useState("All");
 

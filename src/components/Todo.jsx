@@ -22,9 +22,8 @@ const handleCancelClick = () => {
   setIsEdit(false); 
 };
 
-
   return (
-     <div className="tarefa" style={{textDecoration: todo.completa? "line-through": ""}}>
+     <div className={`tarefa ${todo.completa? "line-through" : ""}`}>
   <div className="conteudo">
             <p>{todo.text}</p>
             <p className="prioridade"> <span className='font-medium'>Prioridade: </span>  {todo.prior}</p> 
@@ -46,7 +45,7 @@ const handleCancelClick = () => {
         </div>
       ) : (
         <div>
-          <button onClick={handleEditClick}>Editar</button>
+          <button className={`${todo.completa? "hidden" : ""}`} id="editButton" onClick={handleEditClick}>Editar</button>
         </div>
       )}
 
