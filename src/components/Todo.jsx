@@ -22,6 +22,20 @@ const handleCancelClick = () => {
   setIsEdit(false); 
 };
 
+const editOut = (todo, newText) => {
+  if (newText.trim()) {
+    editTodo(todo.id, newText); 
+    setIsEdit(false);
+  }
+};
+
+const editEnter = (e, id, newText) => {
+  if (e.key === 'Enter') {
+    editTodo(id, newText); 
+    setIsEdit(false);
+    }
+};
+
   return (
      <div className={`tarefa ${todo.completa? "line-through" : ""}`}>
   <div className="conteudo">
@@ -29,7 +43,7 @@ const handleCancelClick = () => {
             <p className="prioridade"> <span className='font-medium'>Prioridade: </span>  {todo.prior}</p> 
           </div>
           <div className="botoes">
-            <button className='complete' onClick={() => completeTodo(todo.id)}>Completar</button>
+            <button className='complete' onClick={() => completeTodo(todo.id)} >Completar</button>
             <button className= {`remove ${todo.completa? "hidden" : ""}`} onClick={() => removeTodo(todo.id)}>x</button>
 
 
@@ -39,6 +53,8 @@ const handleCancelClick = () => {
             type="text"
             value={newText}
             onChange={(e) => setNewText(e.target.value)}
+            onKeyDown={(e) => editEnter(e,todo.id, e.target.value)}
+            onBlur={() => editOut(todo, newText)}
           />
           <button onClick={handleSaveClick}>Salvar</button>
           <button onClick={handleCancelClick}>Cancelar</button>
