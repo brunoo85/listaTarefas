@@ -30,7 +30,7 @@ const handleCancelClick = () => {
           </div>
           <div className="botoes">
             <button className='complete' onClick={() => completeTodo(todo.id)}>Completar</button>
-            <button className='remove' onClick={() => removeTodo(todo.id)}>x</button>
+            <button className= {`remove ${todo.completa? "hidden" : ""}`} onClick={() => removeTodo(todo.id)}>x</button>
 
 
     {isEdit ? (
