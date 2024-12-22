@@ -24,7 +24,7 @@ const addTodo = (text, prior) =>{
     id: Math.floor(Math.random()*10000),
     text,
     prior,
-    completa: false,
+    completed: false,
   },];
 
   setTodos(newTodos);
@@ -38,7 +38,7 @@ const removeTodo = (id) =>{
 
 const completeTodo = (id) =>{
   const newTodos =[...todos];
-  newTodos.map((todo) => todo.id === id ? todo.completa = !todo.completa : todo);
+  newTodos.map((todo) => todo.id === id ? todo.completed = !todo.completed : todo);
   setTodos(newTodos);
 }
 

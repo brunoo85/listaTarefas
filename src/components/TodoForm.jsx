@@ -35,7 +35,7 @@ const TodoForm = ({ addTodo }) => {
       </select>
       {errors.prior && <p role="alert">{errors.prior.message}</p>}
 
-      <input  className='bg-red-600' type="submit" value="Adicionar Tarefa"/>
+      <input  className='inputButton' type="submit" value="Adicionar Tarefa"/>
     </form>
   );
 };

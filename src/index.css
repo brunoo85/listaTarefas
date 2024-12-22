@@ -2,26 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-}
-
-html {
-  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  --font-title: Georgia, 'Times New Roman', Times, serif;
-  --font-size: 1.2rem;
-  --color-light: #aaddff;
-  --color-dark:#001188 ;
-  --radius: 10rem;
-}
-
-.app{
-  @apply w-11/12 mt-0 mx-auto mb-72 bg-zinc-200 max-sm:w-full px-5 py-2.5 font-sans;
-}
-
 @layer base{
   :root{
     --color-light: #aaddff;
@@ -29,7 +9,7 @@ html {
   }
 
   body{
-    @apply text-sky-800 text-xl font-sans;
+    @apply text-sky-800 box-border text-xl font-sans;
   }
 
   input {
@@ -37,7 +17,7 @@ html {
   }
 
   input, select {
-  @apply block border w-full rounded-xl transition-[0.2s] mb-2.5 p-3.5 border-solid border-[#ccc];
+  @apply w-full mb-2.5 p-3.5 block border rounded-xl transition-[0.2s] border-solid border-[#ccc];
   }
 
   input:focus {
@@ -45,23 +25,13 @@ html {
   }
 
   button{
-    @apply text-xl font-sans cursor-pointer rounded-xl transition-[0.1s] text-slate-100 mx-0.5 px-6 py-3 border-none;
-  }
-
-  button:hover, button:focus {
-  @apply shadow-lg;
-  outline: none;
-}
-
-  button:active {
-  @apply shadow-lg;
-  }
-  button:disabled {
-  @apply opacity-50 cursor-wait;
+    @apply mx-0.5 px-6 py-3 text-xl font-sans text-slate-100 cursor-pointer rounded-xl transition-[0.1s] border-none;
+    @apply hover:shadow-lg hover:outline-0;
+    @apply focus:shadow-lg focus:outline-0;
   }
 
   h1{
-    @apply font-sans text-3xl my-4 text-center;
+    @apply my-4 font-sans text-3xl text-center;
   }
 
   h2,p {
@@ -79,79 +49,78 @@ html {
   hr {
     @apply mx-auto my-8 border-2 border-solid border-black;
   }
-
 }
 
-.complete {
-  @apply bg-[#37e129] 
-  /* background-color:rgb(72, 200, 72); */
-  /* ajeitar o hover */
+.app{
+  @apply bg-zinc-200 w-11/12 mt-0 mx-auto mb-72 px-5 py-2.5 font-sans max-sm:w-full;
 }
-
-.remove{
-  @apply bg-[#ed3b34] 
-  /* background-color: #ed3b34; */
-   /* ajeitar o hover */
-}
-
 
 .todo-form{
-  padding-bottom: 1.5rem ;
+  @apply pb-6;
 }
 
 .todo-list{
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--color-dark);
+  @apply mb-2.5 pb-2.5 border-b border-solid border-b-[color:var(--color-dark)];
 }
 
-.tarefa{
-  background-color: rgb(136, 202, 252);
-  box-shadow: 0 0 10px rgba(0,0,0 0.1);
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.todoTask{
+  @apply mb-2.5 p-2.5 flex justify-between items-center flex-wrap rounded-xl bg-[#88cafc] shadow-lg ;
+}
+
+.textTodo{
+  @apply font-medium;
+}
+
+.completedTodo{
+  @apply bg-red-600 line-through;
 }
 
 .filter, .search{
-  border-bottom: 1px solid var(--color-dark);
-  margin-bottom: 10px;
-  padding-bottom: 10px;
+  @apply  mb-2.5 pb-2.5 border-b-[color:var(--color-dark)] border-b border-solid;
 }
 
 .filter-options{
-  justify-content: space-between;
-  gap:3rem;
+  @apply flex flex-wrap justify-between gap-12 max-sm:flex-col;
 }
 
 .filter-options div{
-  flex: 1 1 0;
+  @apply flex-[1_1_0];
 }
 
+.classButtons{
+  @apply flex flex-wrap gap-2;
+}
 
+.completeButton {
+  @apply bg-[#37e129];
+  @apply active:bg-[#2ffc1e];
+}
 
-/* Tudo que está nos arquivos inline para alterar 
-Todo.jsx:
+.removeButton{
+  @apply bg-[#ed3b34];
+  @apply active:bg-[#f52118];
+}
 
-  tarefa = flex-wrap ${todo.completa? "line-through bg-red-600" : ""}`
+.editButton{
+  @apply bg-sky-500;
+}
 
-  span no 2p -> className='font-medium'
+.editingButton{
+  @apply bg-cyan-600;
+  @apply hover:bg-cyan-800;
+  @apply active:bg-cyan-400;
+}
 
-  div abaixo disso: flex flex-wrap gap-2
-  
-  OS ICONES COM CADA UM LÁ MOSTRANDO
+.inputButton{
+  @apply bg-sky-600 w-52 text-slate-100 cursor-pointer rounded-xl;
+  @apply hover:bg-sky-800;
+  @apply active:bg-sky-400;
+}
 
-Botão editar com bg-sky-500
+.completedButton{
+  @apply bg-[#38a82f];
+}
 
-(lembrar de ocultar o botão "concluir e excluir" quando tiver editando
-
-todoForm=====================================
-className='bg-red-600' no botão de input para enviar (lembrar de estilizar ele)
-
-filter====================================
-na filter-options flex flex-wrap max-sm:flex-col
-
-*/
+.iconPencil,.iconX{
+  @apply size-6 text-gray-50;
+}

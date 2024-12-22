@@ -37,17 +37,16 @@ const editEnter = (e, id, newText) => {
 };
 
   return (
-     <div className={`tarefa flex-wrap ${todo.completa? "line-through bg-red-600" : ""}`}>
-  <div className="conteudo">
+     <div className={`todoTask ${todo.completed? "completedTodo" : ""}`}>
+  <div>
             <p>{todo.text}</p>
-            <p className="prioridade"> <span className='font-medium'>Prioridade: </span>  {todo.prior}</p> 
+            <p> <span className='textTodo'>Prioridade: </span>  {todo.prior}</p> 
           </div>
-          <div className="flex flex-wrap gap-2">
-            <button className='complete' onClick={() => completeTodo(todo.id)} >Completar</button>
-            <button className= {`remove ${todo.completa? "hidden" : ""}`} onClick={() => removeTodo(todo.id)}>
-            <XCircleIcon className="size-6 text-gray-50" />
+          <div className="classButtons">
+            <button className={`completeButton ${todo.completed? "completedButton" : ""} ${isEdit? "hidden" : ""}`} onClick={() => completeTodo(todo.id)} >Completar</button>
+            <button className= {`removeButton ${todo.completed||isEdit? "hidden" : ""}`} onClick={() => removeTodo(todo.id)}>
+            <XCircleIcon className="iconX" />
             </button>
-
 
     {isEdit ? (
         <div>
@@ -58,13 +57,13 @@ const editEnter = (e, id, newText) => {
             onKeyDown={(e) => editEnter(e,todo.id, e.target.value)}
             onBlur={() => editOut(todo, newText)}
           />
-          <button onClick={handleSaveClick}>Salvar</button>
-          <button onClick={handleCancelClick}>Cancelar</button>
+          <button onClick={handleSaveClick} className="editingButton">Salvar</button>
+          <button onClick={handleCancelClick} className="editingButton">Cancelar</button>
         </div>
       ) : (
         <div>
-          <button className={`bg-sky-500 ${todo.completa? "hidden" : ""}`} id="editButton" onClick={handleEditClick}>
-          <PencilSquareIcon className="size-6 text-gray-50" />
+          <button className={`editButton ${todo.completed? "hidden" : ""}`} id="editButton" onClick={handleEditClick}>
+          <PencilSquareIcon className="iconPencil" />
           </button>
         </div>
       )}
