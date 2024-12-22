@@ -1,5 +1,5 @@
 import React from 'react'
-import { PencilSquareIcon } from '@heroicons/react/24/solid'
+import { PencilSquareIcon, XCircleIcon} from '@heroicons/react/24/solid'
 
 const Todo = ({todo, removeTodo, completeTodo, editTodo}) => {
 
@@ -44,7 +44,9 @@ const editEnter = (e, id, newText) => {
           </div>
           <div className="flex flex-wrap gap-2">
             <button className='complete' onClick={() => completeTodo(todo.id)} >Completar</button>
-            <button className= {`remove ${todo.completa? "hidden" : ""}`} onClick={() => removeTodo(todo.id)}>x</button>
+            <button className= {`remove ${todo.completa? "hidden" : ""}`} onClick={() => removeTodo(todo.id)}>
+            <XCircleIcon className="size-6 text-gray-50" />
+            </button>
 
 
     {isEdit ? (
@@ -61,7 +63,9 @@ const editEnter = (e, id, newText) => {
         </div>
       ) : (
         <div>
-          <button className={`${todo.completa? "hidden" : ""}`} id="editButton" onClick={handleEditClick}>Editar</button>
+          <button className={`${todo.completa? "hidden" : ""}`} id="editButton" onClick={handleEditClick}>
+          <PencilSquareIcon className="size-6 text-gray-50" />
+          </button>
         </div>
       )}
 
@@ -75,4 +79,3 @@ const editEnter = (e, id, newText) => {
 }
 
 export default Todo
-
