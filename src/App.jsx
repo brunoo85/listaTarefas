@@ -6,25 +6,7 @@ import Search from './components/Search';
 import Filter from './components/Filter';
 
 const App = () => {
-  const [todos, setTodos] = React.useState([
-    { id: 1,
-      text: "Fazer X",
-      prior: "Alta",
-      completa: false,
-  },
-  {
-    id: 2,
-    text: "Fazer Y",
-    prior: "Média",
-    completa: false,
-  },
-  { 
-    id: 3,
-    text: "Fazer Z",
-    prior: "Baixa",
-    completa: true,
-  }
-]);
+  const [todos, setTodos] = React.useState([]);
 
 const priorityOrder = {
   Urgente: 1,
@@ -32,7 +14,6 @@ const priorityOrder = {
   Média: 3,
   Baixa: 4,
 };
-
 
 const [search, setSearch] = React.useState("");
 const [status, setStatus] = React.useState("All");
@@ -67,6 +48,15 @@ const editTodo = (id, newText) => {
   );
   setTodos(updatedTodo);
 };
+
+React.useEffect(() => {
+  const todoSalve = JSON.parse(localStorage.getItem("todos")) || [];
+  setTodos(todoSalve);
+}, []);
+
+React.useEffect(() => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}, [todos]);
 
   return <section className="app w-7/12 
   mt-0 mx-auto mb-73 
