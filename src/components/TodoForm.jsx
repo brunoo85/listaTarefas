@@ -18,7 +18,7 @@ const TodoForm = ({addTodo}) => {
       <form onSubmit={handleSubmit}>
           <input type="text" placeholder='Digite o título' value={value} onChange={(e) => setValue(e.target.value)} />
           <select value={prioridade} onChange={(e) => setPrioridade(e.target.value)}>
-               <option value="">Selecione a prioridade</option>
+               <option disabled value="">Selecione a prioridade</option>
                <option value="Urgente">Urgente</option>
                <option value="Alta">Alta</option>
                <option value="Média">Média</option>
