@@ -58,9 +58,10 @@ React.useEffect(() => {
   localStorage.setItem("todos", JSON.stringify(todos));
 }, [todos]);
 
-  return <section className="app w-7/12 
+  return <section className="app w-11/12 
   mt-0 mx-auto mb-73 
-  bg-zinc-200">
+  bg-zinc-200 
+  max-sm:w-full">
 
     <h1>Lista de tarefas</h1>
     <TodoForm addTodo={addTodo} />

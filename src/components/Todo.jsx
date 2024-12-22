@@ -37,12 +37,12 @@ const editEnter = (e, id, newText) => {
 };
 
   return (
-     <div className={`tarefa ${todo.completa? "line-through" : ""}`}>
+     <div className={`tarefa flex-wrap ${todo.completa? "line-through bg-red-600" : ""}`}>
   <div className="conteudo">
             <p>{todo.text}</p>
             <p className="prioridade"> <span className='font-medium'>Prioridade: </span>  {todo.prior}</p> 
           </div>
-          <div className="botoes">
+          <div className="flex flex-wrap gap-2">
             <button className='complete' onClick={() => completeTodo(todo.id)} >Completar</button>
             <button className= {`remove ${todo.completa? "hidden" : ""}`} onClick={() => removeTodo(todo.id)}>x</button>
 
