@@ -20,8 +20,6 @@ const Filter = ({ status, setStatus, prior, setPrior}) => {
                       <option value="Média">Média</option>
                       <option value="Baixa">Baixa</option>
                   </select>
-                  {/* <button onClick={() =>setprior("Asc")}></button>
-                  <button onClick={() =>setSort("Desc")}>Desc</button> */}
              </div>
          </div>
        </div>

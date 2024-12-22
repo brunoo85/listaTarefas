@@ -58,10 +58,7 @@ React.useEffect(() => {
   localStorage.setItem("todos", JSON.stringify(todos));
 }, [todos]);
 
-  return <section className="app w-11/12 
-  mt-0 mx-auto mb-73 
-  bg-zinc-200 
-  max-sm:w-full">
+  return <section className="app">
 
     <h1>Lista de tarefas</h1>
     <TodoForm addTodo={addTodo} />
@@ -75,8 +72,7 @@ React.useEffect(() => {
       ? todo.completa: 
       !todo.completa)
       .sort((a, b) => priorityOrder[a.prior] - priorityOrder[b.prior])
-      .filter((todo) => todo.text.toLowerCase().includes(search.toLowerCase())) //incluir pesquisa
-      // .sort((a,b) => sort=== "Asc" ? a.text.localeCompare(b.text): b.text.localeCompare(a.text))
+      .filter((todo) => todo.text.toLowerCase().includes(search.toLowerCase()))
       .filter((todo) => prior === "All" 
       ? true 
       : prior === "Urgente" ? todo.prior === "Urgente"

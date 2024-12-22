@@ -63,16 +63,11 @@ const editEnter = (e, id, newText) => {
         </div>
       ) : (
         <div>
-          <button className={`${todo.completa? "hidden" : ""}`} id="editButton" onClick={handleEditClick}>
+          <button className={`bg-sky-500 ${todo.completa? "hidden" : ""}`} id="editButton" onClick={handleEditClick}>
           <PencilSquareIcon className="size-6 text-gray-50" />
           </button>
         </div>
       )}
-
-
-
-        
-            {/* <button className='edit '> <PencilSquareIcon className="size-6 text-gray-50" /> </button> */}
           </div>
      </div>
   )
