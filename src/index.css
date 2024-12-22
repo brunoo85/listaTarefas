@@ -13,133 +13,87 @@ html {
     Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --font-title: Georgia, 'Times New Roman', Times, serif;
   --font-size: 1.2rem;
-  --color: #19f;
-  --color-light: #adf;
-  --color-dark: #018;
-  --radius: 0.2rem;
+  --color-light: #aaddff;
+  --color-dark:#001188 ;
+  --radius: 10rem;
 }
 
 .app{
-  /* max-width: 600px; */
-  /* margin:0 auto 300px; */
-  /* background-color: rgb(238, 238, 238); */
-  padding: 10px 20px;
-  border-radius: 10px;
+  @apply w-11/12 mt-0 mx-auto mb-72 bg-zinc-200 max-sm:w-full px-5 py-2.5 font-sans;
 }
 
-body {
-  /* margin: 1.5rem; */
-  /* background-color: #7be3e3; */
-  /* padding: 10px; */
-  color: var(--color-dark);
-}
+@layer base{
+  :root{
+    --color-light: #aaddff;
+    --color-dark: #001188 ;
+  }
 
-body,
-input,
-textarea,
-button {
-  font-size: var(--font-size);
-  font-family: var(--font);
-}
+  body{
+    @apply text-sky-800 text-xl font-sans;
+  }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-title);
-  
-}
+  input {
+    @apply text-cyan-950 text-xl font-sans;
+  }
 
-h1,
-h2,
-h3,
-p,
-ul {
-  margin: 1rem 0;
-}
+  input, select {
+  @apply block border w-full rounded-xl transition-[0.2s] mb-2.5 p-3.5 border-solid border-[#ccc];
+  }
 
-h1{
-  text-align: center;
-}
+  input:focus {
+    @apply shadow-lg border-[#1199ff] outline-0 ;
+  }
 
-h2{
-  margin-bottom: 10px;
-}
+  button{
+    @apply text-xl font-sans cursor-pointer rounded-xl transition-[0.1s] text-slate-100 mx-0.5 px-6 py-3 border-none;
+  }
 
-ul {
-  list-style: square;
-}
-
-li {
-  margin-bottom: 0.5rem;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-input,
-textarea, select {
-  display: block;
-  border: 1px solid #ccc;
-  width: 100%;
-  padding: 0.8rem;
-  border-radius: var(--radius);
-  background: #eee;
-  transition: 0.2s;
-  margin-bottom: 10px;
-}
-
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--color);
-  background: white;
-  box-shadow: 0 0 0 3px var(--color-light);
-  
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: var(--radius);
-  transition: 0.1s;
-  background: var(--color);
-  color: var(--color-dark);
-  padding: 0.8rem 1.6rem;
-  margin-left:2px;
-  margin-right: 2px;
-
-}
-
-button:hover,
-button:focus {
-  background: var(--color);
-  box-shadow: 0 0 0 3px var(--color-light), 0 0 0 4px var(--color);
+  button:hover, button:focus {
+  @apply shadow-lg;
   outline: none;
 }
 
-button:active {
-  box-shadow: 0 0 0 3px var(--color), 0 0 0 4px var(--color);
-}
+  button:active {
+  @apply shadow-lg;
+  }
+  button:disabled {
+  @apply opacity-50 cursor-wait;
+  }
 
-button:disabled {
-  opacity: 0.5;
-  cursor: wait;
+  h1{
+    @apply font-sans text-3xl my-4 text-center;
+  }
+
+  h2,p {
+    @apply m-4;
+  }
+
+  h2{
+    @apply mb-2.5;
+  }
+
+  li{
+    @apply mb-2;
+  }
+  
+  hr {
+    @apply mx-auto my-8 border-2 border-solid border-black;
+  }
+
 }
 
 .complete {
-  background-color: #6fd86f;
+  @apply bg-[#37e129] 
+  /* background-color:rgb(72, 200, 72); */
+  /* ajeitar o hover */
 }
 
 .remove{
-  background-color: #e8635e;
+  @apply bg-[#ed3b34] 
+  /* background-color: #ed3b34; */
+   /* ajeitar o hover */
 }
 
-hr {
-  border: 2px solid black;
-  margin: 2rem auto;
-}
 
 .todo-form{
   padding-bottom: 1.5rem ;
@@ -176,3 +130,28 @@ hr {
 .filter-options div{
   flex: 1 1 0;
 }
+
+
+
+/* Tudo que está nos arquivos inline para alterar 
+Todo.jsx:
+
+  tarefa = flex-wrap ${todo.completa? "line-through bg-red-600" : ""}`
+
+  span no 2p -> className='font-medium'
+
+  div abaixo disso: flex flex-wrap gap-2
+  
+  OS ICONES COM CADA UM LÁ MOSTRANDO
+
+Botão editar com bg-sky-500
+
+(lembrar de ocultar o botão "concluir e excluir" quando tiver editando
+
+todoForm=====================================
+className='bg-red-600' no botão de input para enviar (lembrar de estilizar ele)
+
+filter====================================
+na filter-options flex flex-wrap max-sm:flex-col
+
+*/
