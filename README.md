@@ -1,8 +1,11 @@
-# React + Vite
+# Lista de tarefas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O seguinte projeto foi feito como parte do processo seletivo da empresa Super Mega Vendas. Para mais informações, [Clicar aqui](https://www.instagram.com/supermegavendas/).
 
-Currently, two official plugins are available:
+## Uso e Configuração
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para usar a aplicação, basta [Clicar aqui](https://lista-tarefas-self.vercel.app/) já que a mesma se encontra com um deploy armazenado no Vercel.
+
+Para baixar o código, basta clicar em "New" <font color=\"green\">(o botão verde que está no início deste repositório).</font>
+
+
