@@ -5,6 +5,7 @@ const Todo = ({todo, removeTodo, completeTodo, editTodo}) => {
 
 const [isEdit, setIsEdit] = React.useState(false); 
 const [newText, setNewText] = React.useState(todo.text);
+const [error, setError] = React.useState("");
 
 const handleEditClick = () => {
   setIsEdit(true); 
@@ -22,18 +23,26 @@ const handleCancelClick = () => {
   setIsEdit(false); 
 };
 
-const editOut = (todo, newText) => {
-  if (newText.trim()) {
-    editTodo(todo.id, newText); 
+const editEnter = (e, id, newText) => {
+  if (e.key === "Enter" && validateInput(newText)) {
+    editTodo(id, newText);
     setIsEdit(false);
   }
 };
 
-const editEnter = (e, id, newText) => {
-  if (e.key === 'Enter') {
-    editTodo(id, newText); 
-    setIsEdit(false);
-    }
+const validateInput = (value) => {
+  if (value.trim() === "") {
+    setError("O campo não pode estar vazio.");
+    return false;
+  }
+  setError("");
+  return true;
+};
+
+const handleChange = (e) => {
+  const value = e.target.value;
+  setNewText(value);
+  validateInput(value);
 };
 
   return (
@@ -51,13 +60,19 @@ const editEnter = (e, id, newText) => {
     {isEdit ? (
         <div>
           <input
-            type="text"
-            value={newText}
-            onChange={(e) => setNewText(e.target.value)}
-            onKeyDown={(e) => editEnter(e,todo.id, e.target.value)}
-            onBlur={() => editOut(todo, newText)}
+           type="text"
+           value={newText}
+           onChange={handleChange}
+           onKeyDown={(e) => editEnter(e, todo.id, e.target.value)}
+           onBlur={() => validateInput(newText)}
           />
-          <button onClick={handleSaveClick} className="editingButton">Salvar</button>
+           {error && (
+              <p>{error}</p>
+            )}
+          <button  onClick={handleSaveClick}
+              className="editingButton"
+              disabled={!!error}
+              >Salvar</button>
           <button onClick={handleCancelClick} className="editingButton">Cancelar</button>
         </div>
       ) : (
